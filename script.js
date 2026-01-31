@@ -71,7 +71,7 @@ async function downloadImage() {
 
         const link = document.createElement('a');
         link.href = blobUrl;
-        link.download = 'ia-imagem.png'; // Nome do arquivo
+        link.download = 'ia-imagem'; // Nome do arquivo
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
