@@ -7,7 +7,7 @@ function generateImage() {
     const ratioValue = document.getElementById('dropdownRatio').value;
 
     if (!promptValue) {
-        alert('Digita para poder gerar imagem');
+        alert('Digite algo para gerar a imagem');
         return;
     }
 
@@ -30,10 +30,7 @@ function generateImage() {
         `https://image.pollinations.ai/prompt/${encodeURIComponent(promptValue)}` +
         `?width=${width}&height=${height}&seed=${seed}`;
 
-    imageResultElement.onload = () => {
-        setLoadingState(false);
-    };
-
+    imageResultElement.onload = () => setLoadingState(false);
     imageResultElement.onerror = () => {
         alert('Erro ao gerar imagem');
         setLoadingState(false);
@@ -53,19 +50,35 @@ function setLoadingState(isLoading) {
     }
 }
 
-// Download da imagem
-function downloadImage() {
+// Download da imagem de forma correta via fetch
+async function downloadImage() {
     const imageUrl = imageResultElement.src;
 
     if (!imageUrl) {
-        alert('No image to download');
+        alert('Não há imagem para baixar');
         return;
     }
 
-    const link = document.createElement('a');
-    link.href = imageUrl;
-    link.download = 'ia-imagem.png';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    try {
+        // Faz requisição da imagem e pega como blob
+        const response = await fetch(imageUrl, { mode: 'cors' });
+        if (!response.ok) throw new Error('Erro ao baixar a imagem');
+
+        const blob = await response.blob();
+
+        // Cria URL temporária para download
+        const blobUrl = URL.createObjectURL(blob);
+
+        const link = document.createElement('a');
+        link.href = blobUrl;
+        link.download = 'ia-imagem.png'; // Nome do arquivo
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        // Libera memória
+        URL.revokeObjectURL(blobUrl);
+    } catch (error) {
+        alert('Erro ao baixar a imagem: ' + error.message);
+    }
 }
