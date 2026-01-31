@@ -28,18 +28,29 @@
                 <!-- PROMPT INPUT -->
                 <textarea class="form-container__prompt-input" id="prompt" rows="5"
                     placeholder="Digita para pode gerar imagem"></textarea>
+
                 <div class="form-container__dropdown-group">
+
                     <!-- DROPDOWN STYLE -->
                     <select class="form-container__dropdown" id="dropdownStyles">
                         <option value="realistic">ORIGINAL</option>
+                        <option value="anime">ANIME</option>
+                        <option value="cartoon">CARTOON</option>
+                        <option value="3d">3D RENDER</option>
+                        <option value="pixel">PIXEL ART</option>
                     </select>
+
                     <!-- DROPDOWN RATIO -->
                     <select class="form-container__dropdown" id="dropdownRatio">
                         <option value="1:1">1:1</option>
                         <option value="16:9">16:9</option>
                         <option value="9:16">9:16</option>
+                        <option value="4:3">4:3</option>
+                        <option value="21:9">21:9</option>
                     </select>
+
                 </div>
+
                 <!-- GENERATE IMAGE BUTTON -->
                 <button class="form-container__button" onclick="generateImage()">
                     <box-icon type='solid' name='magic-wand'></box-icon>
@@ -49,10 +60,12 @@
 
             <!-- IMAGE CONTAINER -->
             <section class="image-container" id="imageContainer">
+
                 <!-- IMAGE RESULT -->
                 <img class="image-container__image-result" id="imageResult" src="gerar.png">
 
                 <div class="image-container__layer"></div>
+
                 <button class="image-container__download-button" onclick="downloadImage()">
                     <box-icon name='download'></box-icon>
                 </button>
@@ -61,7 +74,8 @@
                 <div class="image-container__loading-container">
                     <svg class="image-container__loading-spinner" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 200 200">
-                        <radialGradient id="a12" cx=".66" fx=".66" cy=".3125" fy=".3125" gradientTransform="scale(1.5)">
+                        <radialGradient id="a12" cx=".66" fx=".66" cy=".3125" fy=".3125"
+                            gradientTransform="scale(1.5)">
                             <stop offset="0" stop-color="#2356FF"></stop>
                             <stop offset=".3" stop-color="#2356FF" stop-opacity=".9"></stop>
                             <stop offset=".6" stop-color="#2356FF" stop-opacity=".6"></stop>
@@ -69,16 +83,24 @@
                             <stop offset="1" stop-color="#2356FF" stop-opacity="0"></stop>
                         </radialGradient>
                         <circle transform-origin="center" fill="none" stroke="url(#a12)" stroke-width="20"
-                            stroke-linecap="round" stroke-dasharray="200 1000" stroke-dashoffset="0" cx="100" cy="100"
-                            r="70">
-                            <animateTransform type="rotate" attributeName="transform" calcMode="spline" dur="2"
-                                values="360;0" keyTimes="0;1" keySplines="0 0 1 1" repeatCount="indefinite">
+                            stroke-linecap="round" stroke-dasharray="200 1000" stroke-dashoffset="0"
+                            cx="100" cy="100" r="70">
+                            <animateTransform type="rotate" attributeName="transform"
+                                calcMode="spline" dur="2"
+                                values="360;0" keyTimes="0;1"
+                                keySplines="0 0 1 1"
+                                repeatCount="indefinite">
                             </animateTransform>
                         </circle>
-                        <circle transform-origin="center" fill="none" opacity=".2" stroke="#2356FF" stroke-width="20"
-                            stroke-linecap="round" cx="100" cy="100" r="70"></circle>
+                        <circle transform-origin="center" fill="none" opacity=".2"
+                            stroke="#2356FF" stroke-width="20"
+                            stroke-linecap="round"
+                            cx="100" cy="100" r="70">
+                        </circle>
                     </svg>
-                    <span class="image-container__loading-text">CARREGANDO SUA IMAGEM</span>
+                    <span class="image-container__loading-text">
+                        CARREGANDO SUA IMAGEM
+                    </span>
                 </div>
             </section>
         </div>
@@ -86,8 +108,5 @@
 
     <script src="script.js"></script>
 </body>
-
-
-</html>
-
-
+                                                  </html>
+                            
