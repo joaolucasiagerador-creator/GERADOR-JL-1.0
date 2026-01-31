@@ -249,6 +249,11 @@ body {
         flex-direction: column;
     }
 
+    .form-container__dropdown-group{
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
     .image-container {
         width: 100%;
     }
